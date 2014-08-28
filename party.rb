@@ -32,7 +32,7 @@ RANDOMS = [
   'teen vampires party',
   'exotic birds party',
   'monopoly party',
-  'biblical plagues',
+  'biblical plagues party',
   'democratic convention party',
   'republican convention party'
 ]
