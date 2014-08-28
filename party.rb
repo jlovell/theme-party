@@ -4,24 +4,24 @@ require 'haml'
 require 'sass'
 
 RANDOMS = [
-  'a war of 1812 party',
-  'a water-less pool party',
+  'war of 1812 party',
+  'water-less pool party',
   'christmas in august',
-  'a celebrity couples party',
-  'an angels and devils party',
-  'a masquerade',
-  'a medieval party',
-  'a hawaiian luau',
-  'a casino party',
-  'a toga party',
-  'a mustache party',
-  'a wild west party',
-  'a ninja party',
-  'a neon party',
-  'a groovy disco',
-  'a pirate party',
-  'a crazy hat party',
-  'a frat/sorority party'
+  'celebrity couples party',
+  'angels and devils party',
+  'masquerade',
+  'medieval party',
+  'hawaiian luau',
+  'casino party',
+  'toga party',
+  'mustache party',
+  'wild west party',
+  'ninja party',
+  'neon party',
+  'groovy disco party',
+  'pirate party',
+  'crazy hat party',
+  'frat/sorority party'
 ]
 
 get '/' do end
@@ -42,8 +42,8 @@ get '/:name' do |name|
 
   @theme =
   case name
-  when 'jason' then 'a mexican fiesta'
-  when 'will'  then 'a spring break party'
+  when 'jason' then 'mexican fiesta'
+  when 'will'  then 'spring break party'
   else
     RANDOMS[Random.new(name.codepoints.inject(:+)).rand(RANDOMS.size)]
   end
