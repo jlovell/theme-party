@@ -19,3 +19,4 @@ DEPENDENCIES
   haml
   sass
   sinatra
+  tilt

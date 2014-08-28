@@ -3,5 +3,5 @@ require 'bundler'
 
 Bundler.require
 
-require 'party'
+require_relative 'party'
 run Sinatra::Application
