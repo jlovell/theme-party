@@ -24,5 +24,5 @@ get '/:name' do |name|
   else ['war of 1812', 'water-less pool', 'celebrity couples'].sample
   end
 
-  haml :party
+  haml :invite
 end
