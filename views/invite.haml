@@ -1,7 +1,33 @@
 %p
-  = @name ? "#{@name}, you're" : "You're"
-  invited to a #{@theme} party on Friday.
-  %br
-  %br
-  7 o'clock. 1642 N North Park. Garden Unit.
-  Call if you can't make it.
+  #{@name}, you're invited to a #{@theme} party on Friday.
+%p
+  7 o'clock.
+  %nobr 1642 N North Park.
+  Garden.
+%p.make-it
+  Can you make it?
+  %nobr
+    %span.circle.response-yes
+      %span.center YES
+    %span.circle.response-no
+      %span.center NO
+  %span.sending Replying...
+  %span.thanks Thanks!
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+:javascript
+  (function(){
+    $('.circle').on('click', function(){
+      $('.thanks').hide()
+      $('.sending').show()
+      data = {
+        response: $(this).text().trim(),
+        name: window.location.pathname
+      }
+
+      $.post( "respond", data, function() {
+        $('.sending').hide()
+        $('.thanks').show()
+      });
+    })
+  })()

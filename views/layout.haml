@@ -1,5 +1,8 @@
+<!doctype html>
 %html
   %head
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=550">
     %title #{@name}'s Invitation
     <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
   :scss
@@ -12,10 +15,42 @@
     }
     .main {
       max-width: 50em;
-      padding: 2em;
+      padding: 1em 2em;
       margin: 0 auto;
     }
-    p { font-size: 4em; }
+    p { font-size: 3em; }
+    .make-it { line-height: 180%; }
+    .circle {
+      width: 100px;
+      height: 100px;
+      margin: 0 10px;
+      text-align: center;
+      line-height: 150%;
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 0.7em;
+      border: 2px solid #ffe8e7;
+      border-radius: 100%;
+      position: relative;
+      & > .center {
+        height: 27px;
+        margin: auto;
+        display: block;
+        position: absolute;
+        top: -27px;
+        bottom: 0;
+        right: 0;
+        left: 0;
+      }
+      cursor: pointer;
+      transition: background-color 0.2s;
+      &.response-yes:hover { background-color: #27ae60; }
+      &.response-no:hover { background-color: #c0392b; }
+    }
+    .thanks, .sending {
+      font-size: 0.6em;
+      display: none;
+    }
   %body
     .main
       = yield
