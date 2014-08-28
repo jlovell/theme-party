@@ -7,6 +7,7 @@ RANDOMS = [
   'war of 1812 party',
   'water-less pool party',
   'christmas in august',
+  'mexican fiesta',
   'celebrity couples party',
   'angels and devils party',
   'masquerade',
@@ -21,7 +22,19 @@ RANDOMS = [
   'groovy disco party',
   'pirate party',
   'crazy hat party',
-  'frat/sorority party'
+  'frat/sorority party',
+  'migrant workers party',
+  'Sunny and Share party',
+  'anything but booze party',
+  'obscure sports party',
+  'business hoes and CEOs party',
+  'famous cereal mascots party',
+  'teen vampires party',
+  'exotic birds party',
+  'monopoly party',
+  'biblical plagues',
+  'democratic convention party',
+  'republican convention party'
 ]
 
 get '/' do end
@@ -30,8 +43,8 @@ get '/favicon.ico' do end
 get '/:name' do |name|
   name &&= name.downcase
   cookie = request.cookies['invitee']
-  # return "cheater" if cookie && !name[cookie]
-  response.set_cookie 'invitee', name
+  return haml "%p nice try." if cookie && !name[cookie]
+  response.set_cookie 'invitee', cookie || name
 
   @name =
   case name
@@ -42,8 +55,16 @@ get '/:name' do |name|
 
   @theme =
   case name
-  when 'jason' then 'mexican fiesta'
-  when 'will'  then 'spring break party'
+  when 'jason'       then 'mexican fiesta'
+  when 'will'        then 'spring break party'
+  when 'kyle'        then 'halloween party'
+  when 'corinne'     then 'spring break party'
+  when 'matt'        then 'superhero party'
+  when 'shannon'     then 'cats party'
+  when 'nate'        then 'easter party'
+  when 'mary'        then 'French-American war'
+  when 'sam', 'todd' then 'celebrity couples party'
+  when 'ray'         then 'monopoly party'
   else
     RANDOMS[Random.new(name.codepoints.inject(:+)).rand(RANDOMS.size)]
   end
@@ -55,7 +76,7 @@ post '/respond' do
   Pony.mail({
     to:      "jason@zoomcc.com",
     subject: "Theme party response #{params[:response]}",
-    body:    "#{params[:name][1..-1]} - #{params[:response]}",
+    body:    "#{params[:name][1..-1]} - #{params[:response]} - #{params[:theme]}",
     via:     :smtp,
     via_options: {
       address:              'smtp.gmail.com',

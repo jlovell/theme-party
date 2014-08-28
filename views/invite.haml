@@ -30,7 +30,8 @@
       $('.sending').show()
       data = {
         response: $(this).text().trim(),
-        name: window.location.pathname
+        name: window.location.pathname,
+        theme: '#{@theme}'
       }
 
       $.post( "respond", data, function() {
