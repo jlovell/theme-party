@@ -46,12 +46,7 @@ get '/:name' do |name|
   return haml "%p nice try." if cookie && !name[cookie]
   response.set_cookie 'invitee', cookie || name
 
-  @name =
-  case name
-  when 'jason' then 'Jason Lovell'
-  when 'will'  then 'Will Thwaites'
-  else name.capitalize
-  end
+  @name = name.capitalize
 
   @theme =
   case name
@@ -65,6 +60,7 @@ get '/:name' do |name|
   when 'mary'        then 'French-American war'
   when 'sam', 'todd' then 'celebrity couples party'
   when 'ray'         then 'monopoly party'
+  when 'zak'         then 'superhero party'
   else
     RANDOMS[Random.new(name.codepoints.inject(:+)).rand(RANDOMS.size)]
   end
