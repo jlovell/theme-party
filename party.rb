@@ -83,7 +83,7 @@ post '/respond' do
       port:                 '587',
       enable_starttls_auto: true,
       user_name:            'jason@zoomcc.com',
-      password:             ENV['GMAIL_KEY'] || 'rvgxxkzrhlfnboev',
+      password:             ENV['GMAIL_KEY'],
       authentication:       :plain,
       domain:               "party.thwovell.com"
     }
