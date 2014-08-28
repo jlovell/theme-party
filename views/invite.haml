@@ -2,7 +2,9 @@
   #{@name}, you're invited to a #{@theme} party on Friday.
 %p
   7 o'clock.
-  %nobr 1642 N North Park.
+  %nobr
+    %a{onclick: 'try_google_app()', href: 'comgooglemaps://?q=1642+N+North+Park+Avenue,+Chicago,+IL+60614&center=41.9122868,-87.636722&zoom=15'}
+      1642 N North Park.
   Garden.
 %p.make-it
   Can you make it?
@@ -16,6 +18,12 @@
 
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 :javascript
+  function open_google_website() {
+    window.location='https://www.google.com/maps/place/1642+N+North+Park+Avenue,+Chicago,+IL+60614/@41.9122868,-87.636722,15z/data=!3m1!4b1!4m2!3m1!1s0x880fd340f100e70d:0x564319586f8e655b';
+  }
+  function try_google_app() {
+    setTimeout('open_google_website()', 300);
+  }
   (function(){
     $('.circle').on('click', function(){
       $('.thanks').hide()
